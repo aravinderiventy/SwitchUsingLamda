@@ -1,16 +1,17 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 //Switch using lamda expression
-Console.WriteLine("Hello, World!");
 
 string fileType = Constants.ExcelFileType;
-var methodToExecute = fileType switch
+var result = fileType switch
 {
     Constants.PdfFileType => ExportPdf(),
     Constants.ExcelFileType => ExportXls(),
     Constants.DocFileType => ExportDoc(),
     _ => null
 };
+
+Console.WriteLine(result);
 
 string ExportPdf()
 {
