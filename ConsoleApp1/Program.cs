@@ -2,33 +2,11 @@
 using System.Security.AccessControl;
 using System.Text;
 
+//To count char 'l' from the given sting
 string findCharCount = "Welcome to my blog.";
-
 var count=findCharCount.Count(x => x.Equals('l'));
 
-
-string s1 = "aa";
-string s2 = "aa";
-if (s1.Equals(s2))
-{
-    Console.WriteLine("match");
-}
-Emp emp = new Emp();
-int[] numbers = { 4, 7, 2, 3, 4, 5, 3, 6, 7, 8, 1, 8 };
-var distDupl = emp.findDistDuplNums(numbers);
-
-for (int i = 0; i < numbers.Length; i++)
-{
-    for (int j = 0; j < i; j++)
-    {
-        if (numbers[i] == numbers[j])
-        {
-            Console.WriteLine($"Duplicate num: {numbers[i]}");
-            break;
-        }
-    }
-}
-
+//To check given words are Palindrme.
 string strWords = "aa cc aa";
 string[] newStrArray = strWords.Split(' ');
 StringBuilder newStr = new StringBuilder();
@@ -44,9 +22,39 @@ else
 {
     Console.WriteLine("Given name is not Palindrome");
 }
-		
-	
 
+string str = "abcba";
+char[] chars = str.ToCharArray();
+var rev = chars.Reverse().ToArray();
+if (str == new string(rev))
+{
+    Console.WriteLine("Palindrome.");
+}
+else
+{
+    Console.WriteLine("not pali");
+}
+
+//To Print reverse words
+string str1 = "I like programing c#";
+StringBuilder reverseWords =new StringBuilder();
+var strArray= str1.Split(" ");
+for (int i = strArray.Length - 1; i >= 0; i--)
+{
+    reverseWords.Append(strArray[i] + " ");
+}
+Console.WriteLine(reverseWords);
+
+//To Print reverse chars
+StringBuilder reverseStr =new StringBuilder();
+string str2 = "abc 123";
+for (int i = str2.Length-1; i >=0; i--)
+{
+    reverseStr.Append(str2[i]);
+}
+Console.WriteLine(reverseStr);
+
+//To print Fibonacci series
 int a = 0, b = 1, c = 0;
 Console.WriteLine(a + " " + b);
 int maxValue = 50;
@@ -62,47 +70,27 @@ for (int i = 0; i < maxValue; i++)
     break;
 }
 
-
-string str1 = "I like programing c#";
-StringBuilder reverseWords =new StringBuilder();
-var strArray= str1.Split(" ");
-for (int i = strArray.Length - 1; i >= 0; i--)
-{
-    reverseWords.Append(strArray[i] + " ");
-}
-Console.WriteLine(reverseWords);
-
-
-StringBuilder reverseStr =new StringBuilder();
-string str2 = "abc 123";
-for (int i = str2.Length-1; i >=0; i--)
-{
-    reverseStr.Append(str2[i]);
-}
-Console.WriteLine(reverseStr);
-
-
+//Get duplicate number
 int[] nums = [1, 2, 3, 3];
 var repeatedNum = emp.RepeatedNTimes(nums);
 Console.WriteLine(repeatedNum);
 
-
-string str = "abcba";
-char[] chars = str.ToCharArray();
-var rev = chars.Reverse().ToArray();
-if (str == new string(rev))
+//find duplicates and distinct numbers
+Emp emp = new Emp();
+int[] numbers = { 4, 7, 2, 3, 4, 5, 3, 6, 7, 8, 1, 8 };
+var distDupl = emp.findDistDuplNums(numbers);
+//or
+for (int i = 0; i < numbers.Length; i++)
 {
-    Console.WriteLine("Palindrome.");
+    for (int j = 0; j < i; j++)
+    {
+        if (numbers[i] == numbers[j])
+        {
+            Console.WriteLine($"Duplicate num: {numbers[i]}");
+            break;
+        }
+    }
 }
-else
-{
-    Console.WriteLine("not pali");
-}
-
-string myStr=string.Empty;
-emp.testDt = DateTime.MinValue;
-myStr = emp.testDt.GetValueOrDefault().ToShortDateString();
-Console.WriteLine("Hello, World!");
 
 
 public class Emp
@@ -111,7 +99,6 @@ public class Emp
 
     public int RepeatedNTimes(int[] nums)
     {
-        
         return nums.GroupBy(x => x).FirstOrDefault(x => x.Count() > 1).Key;
     }
 
