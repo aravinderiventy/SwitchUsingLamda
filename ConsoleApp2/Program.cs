@@ -16,7 +16,7 @@ Console.WriteLine(result);
 string ExportPdf()
 {
     Console.WriteLine("Pdf file Exported");
-    return methodToExecute;
+    return string.Empty;
 }
 
 string ExportDoc()

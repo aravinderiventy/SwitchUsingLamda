@@ -71,12 +71,14 @@ for (int i = 0; i < maxValue; i++)
 }
 
 //Get duplicate number
-int[] nums = [1, 2, 3, 3];
+Emp emp = new Emp();
+emp.nullableParam(null, "s");
+
+List<int> nums = new List<int> { 1, 2, 3, 3 };
 var repeatedNum = emp.RepeatedNTimes(nums);
 Console.WriteLine(repeatedNum);
 
 //find duplicates and distinct numbers
-Emp emp = new Emp();
 int[] numbers = { 4, 7, 2, 3, 4, 5, 3, 6, 7, 8, 1, 8 };
 var distDupl = emp.findDistDuplNums(numbers);
 //or
@@ -96,11 +98,19 @@ for (int i = 0; i < numbers.Length; i++)
 public class Emp
 {
     public DateTime? testDt { get; set; }
+    public readonly string ane = "aa";
 
-    public int RepeatedNTimes(int[] nums)
+    public int RepeatedNTimes(List<int> nums)
     {
+        IEnumerable<int> numbers;
+        List<int> lstNums = new List<int>();
+        lstNums.Add(2);
+        lstNums.Add(3);
+        numbers = lstNums.ToArray();
+        
         return nums.GroupBy(x => x).FirstOrDefault(x => x.Count() > 1).Key;
     }
+    
 
     public Dictionary<List<int>, List<int>> findDistDuplNums(int[] numbers)
     {
@@ -115,5 +125,10 @@ public class Emp
         }
         ss.Add(distinctNumbers.ToList(), duplicateNumbers.ToList());
         return ss;
+    }
+
+    public void nullableParam(int? a, string b="")
+    {
+
     }
 }
